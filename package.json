@@ -1,0 +1,23 @@
+{
+  "name": "bohems-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wsclient.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Philosophistoria/BoHEMS-dev.git"
+  },
+  "author": "Akifumi Takahashi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Philosophistoria/BoHEMS-dev/issues"
+  },
+  "homepage": "https://github.com/Philosophistoria/BoHEMS-dev#readme",
+  "devDependencies": {
+    "serialport": "^9.0.7",
+    "ws": "^7.4.5"
+  }
+}
