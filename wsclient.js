@@ -56,17 +56,17 @@ wsclient.sock.on("message", payload => {
     finally {
         console.log(payload);
     }
+    // response
     if (message_type == "String") {
         console.log(message);
     }
     else if (message_type == "JSON") {
+        console.log("json: " + message);
         if (message.response == "start") {
-            console.log("json: " + message);
-            serialcom.write(message.option + 'S');
+            serialcom.write(message.option.finger + 'S');
         }
         else if (message.response == "stop") {
-            console.log("json: " + message);
-            serialcom.write(message.option + 'P');
+            serialcom.write(message.option.finger + 'P');
         }
     }
 });
