@@ -11,11 +11,12 @@ serialcom.port.on('open', function () {
 });
 
 serialcom.port.on('data', function (data) {
-    console.log('Data: ' + data);
+    //console.log(data.toString());
+    process.stdout.write(data.toString());
 });
 
 serialcom.write = (data) => {
-    console.log('Write: ' + data);
+    console.log('Write: \n' + data);
     serialcom.port.write(data, function (err, results) {
         if (err) {
             console.log('Err: ' + err);
@@ -24,10 +25,19 @@ serialcom.write = (data) => {
     });
 };
 
+process.stdin.setRawMode(true);
+process.stdin.on("data", (data) => {
+    if (data == '\x03') {
+        process.exit();
+    }
+    serialcom.write(data);
+    //console.log(data);
+});
+
 const wsclient = {};
 const websocket = require("ws");
-//wsclient.sock = new websocket("ws://54.168.9.34:5001", {
-wsclient.sock = new websocket("ws://127.0.0.1:5001", {
+wsclient.sock = new websocket("ws://54.168.9.34:5001", {
+//wsclient.sock = new websocket("ws://127.0.0.1:5001", {
     perMessageDeflate: false
 });
 
